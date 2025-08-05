@@ -1,6 +1,3 @@
-#------------------------------------------------------EMPLOYEE ATTRITION PROJECT-----------------------------------------------------------------
-#_________________________________________________________________________________________________________________________________________________
-
 #  Import Libraries
 
 import pandas as pd
@@ -63,6 +60,7 @@ plt.savefig('eda_income_distribution.png')
 
 
 #________________________________________________________________________________________________________________________________________________
+
 #  Feature Engineering---------------------------------------------------------------------------------------------------------------------------
 df['EngagementScore'] = df[['JobInvolvement', 'EnvironmentSatisfaction', 'JobSatisfaction', 'WorkLifeBalance']].mean(axis=1)
 
@@ -85,6 +83,9 @@ X = df.drop('Attrition', axis=1)
 y = df['Attrition'].apply(lambda x: 0 if x == 'Yes' else 1)
 print(y)
 print(df)
+
+
+
 #------------------------------------------------------------------------------------------------------------------------------------------------
 
 # 🔹 Encode categorical columns
@@ -164,6 +165,8 @@ os.makedirs('models',exist_ok=True)
 pickle.dump(best_model, open("models/best_model.pkl", "wb"))
 pickle.dump(scaler, open("models/scaler.pkl", "wb"))
 pickle.dump(encoders, open("models/encoders.pkl", "wb"))
+
+
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 # streamlit UI
 
@@ -280,17 +283,3 @@ with st.form("attrition_form"):
            st.success("✅ The employee is likely to **Stay** with the company.")
         else:
            st.error("⚠️ The employee is likely to **Leave** the company.")
-
-
-
-
-
-#----------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
